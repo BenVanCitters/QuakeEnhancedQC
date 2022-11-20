@@ -409,7 +409,7 @@ float   SVC_CHAT                = 53;
 float   SVC_LEVELCOMPLETED      = 54;
 float   SVC_BACKTOLOBBY         = 55;
 float   SVC_LOCALSOUND          = 56;
-
+float   SVC_PROMPT 				= 57;
 
 
 float	TE_SPIKE		= 0;
@@ -424,6 +424,8 @@ float	TE_KNIGHTSPIKE	= 8;
 float	TE_LIGHTNING3	= 9;
 float	TE_LAVASPLASH	= 10;
 float	TE_TELEPORT		= 11;
+float	TE_EXPLOSION2   = 12;
+float	TE_BEAM			= 13;
 
 // sound channels
 // channel 0 never willingly overrides
@@ -462,7 +464,8 @@ float	MSG_ONE			= 1;		// reliable to one (msg_entity)
 float	MSG_ALL			= 2;		// reliable to all
 float	MSG_INIT		= 3;		// write to the init string
 
-// team numbers for Coop
+// team numbers
+float TEAM_NONE			= -1;
 float TEAM_MONSTERS		= 0;
 float TEAM_HUMANS		= 1;
 
@@ -532,6 +535,8 @@ float WORLDTYPE_BASE = 2;
 .float		worldtype;
 
 //================================================
+
+.float		alpha;
 
 .string		killtarget;
 
@@ -824,6 +829,13 @@ float CheckPlayerEXFlags( entity playerEnt ) = #0:ex_CheckPlayerEXFlags;
 float walkpathtogoal( float movedist, vector goal ) = #0:ex_walkpathtogoal;
 
 float checkextension( string s ) = #99;
+
+void setcolor( entity client, float color ) = #401;
+
+void prompt( entity client, string text, float numChoices ) = #0:ex_prompt;
+void promptchoice( entity client, string text, float impulse ) = #0:ex_promptchoice;
+void clearprompt( entity client ) = #0:ex_clearprompt;
+
 
 //============================================================================
 
